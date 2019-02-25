@@ -3,3 +3,6 @@
 # found in the LICENSE file.
 
 import("//v8/build_overrides/build.gni")
+
+perfetto_build_with_embedder = true
+perfetto_root_path = "//perfetto/"

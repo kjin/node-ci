@@ -6,3 +6,10 @@ group("gtest") {
   testonly = true
   public_deps = [ "//v8/testing/gtest" ]
 }
+
+source_set("gtest_main") {
+  testonly = true
+  deps = [
+    "//v8/testing/gtest:gtest_main",
+  ]
+}

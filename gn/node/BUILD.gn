@@ -10,6 +10,9 @@ declare_args() {
   # Enable the V8 inspector protocol for use with node.
   node_enable_inspector = true
 
+  # Enable Perfetto.
+  node_enable_perfetto = true
+
   # Build node with SSL support.
   # The variable is called "openssl" for parity with node's GYP build.
   node_use_openssl = true
@@ -147,7 +150,10 @@ chdir_action("node_js2c") {
 config("node_base_external") {
   include_dirs = [ "src" ]
   defines = [ "NODE_WANT_INTERNALS=1" ]
-  configs = [ "//v8:external_config" ]
+  configs = [
+    "//v8:external_config",
+    "//perfetto/gn:public_config"
+  ]
 }
 
 config("node_base_internal") {
@@ -227,6 +233,11 @@ config("node_base_internal") {
   } else {
     defines += [ "HAVE_INSPECTOR=0" ]
   }
+  if (node_enable_perfetto) {
+    defines += [ "HAVE_PERFETTO=1" ]
+  } else {
+    defines += [ "HAVE_PERFETTO=0" ]
+  }
   if (v8_enable_i18n_support) {
     defines += [ "NODE_HAVE_I18N_SUPPORT=1" ]
   } else {
@@ -272,6 +283,10 @@ source_set("node_base") {
 
   if (node_enable_inspector) {
     deps += [ "src/inspector" ]
+  }
+
+  if (node_enable_perfetto) {
+    deps += [ "//perfetto:libperfetto" ]
   }
 
   if (node_use_openssl) {

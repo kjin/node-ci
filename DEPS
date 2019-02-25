@@ -30,6 +30,12 @@ vars = {
   'node_revision': '9ea7a1eddfe850fc1e6ec2e517f67a627afcaa51',
   'node_url': 'https://chromium.googlesource.com/external/github.com/v8/node.git',
 
+  'perfetto_revision': '156cf83837bcdfab014a4485e2023344740b0d7b',
+  'perfetto_url': 'https://android.googlesource.com/platform/external/perfetto/',
+
+  'protobuf_revision': 'be1716a6d0346de7a990b60f4afc9aebe2e06f36',
+  'protobuf_url': 'https://chromium.googlesource.com/external/github.com/google/protobuf/',
+
   'trace_common_revision' : '936ba8a963284a6b3737cf2f0474a7131073abee',
   'trace_common_url': 'https://chromium.googlesource.com/chromium/src/base/trace_event/common.git',
 
@@ -42,11 +48,13 @@ deps = {
   'node-ci/build': Var('build_url') + '@' + Var('build_revision'),
   'node-ci/buildtools': Var('buildtools_url') + '@' + Var('buildtools_revision'),
   'node-ci/node': Var('node_url') + '@' + Var('node_revision'),
+  'node-ci/perfetto': Var('perfetto_url') + '@' +  Var('perfetto_revision'),
   'node-ci/third_party/depot_tools': Var('depot_tools_url') + '@' + Var('depot_tools_revision'),
   'node-ci/third_party/googletest/src': Var('googletest_url') + '@' + Var('googletest_revision'),
   'node-ci/third_party/icu': Var('icu_url') + '@' + Var('icu_revision'),
   'node-ci/third_party/jinja2': Var('jinja2_url') + '@' + Var('jinja2_revision'),
   'node-ci/third_party/markupsafe': Var('markupsafe_url') + '@' + Var('markupsafe_revision'),
+  'node-ci/third_party/protobuf': Var('protobuf_url') + '@' +  Var('protobuf_revision'),
   'node-ci/tools/clang': Var('clang_url') + '@' + Var('clang_revision'),
   'node-ci/v8': Var('v8_url') + '@' +  Var('v8_revision'),
 }

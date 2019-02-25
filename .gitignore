@@ -3,6 +3,7 @@
 /build
 /buildtools/
 /node
+/perfetto
 /third_party
 /tools/clang
 /v8
